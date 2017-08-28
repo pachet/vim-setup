@@ -121,7 +121,7 @@ function! Grepper(query)
 	" git repos. If so, I'll just remove the line:
 
 	" execute ':cd ~/burninggarden'
-	let repo_location = system('~/find-repo')
+	let repo_location = system('~/vim-setup/bin/find-repo')
 	execute ':cd ' . repo_location
 
 	let results = system('git grep "' . a:query . '"')
