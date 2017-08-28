@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script walks up the directory tree until it encounters a git repository,
+# then echoes the final directory location of the repo to the client.
+
+while [ ! -d ".git" ] && [ "$PWD" != "/" ]
+do
+	cd ..
+done
+
+echo `pwd`

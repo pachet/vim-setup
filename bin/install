@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ -e ~/.vimrc ]
+then
+	echo "Making backup of .vimrc..."
+	mv ~/.vimrc ~/.vimrc-disabled
+fi
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/colors
+
+cp files/.vimrc ~/.vimrc
+cp files/colors/molokai.vim ~/.vim/colors/molokai.vim
+
+# Install necessary Vim dependencies:
+if [ -e ~/.vim/bundle/pathogen.vim ]
+then
+	echo "Making backup of pathogen.vim..."
+	mv ~/.vim/bundle/pathogen.vim ~/.vim/bundle/pathogen-disabled.vim
+fi
+
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+if [ -e ~/.vim/bundle/syntastic ]
+then
+	echo "Making backup of syntastic plugin..."
+	mv ~/.vim/bundle/syntastic ~/.vim/bundle/syntastic-disabled
+fi
+
+git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
+
+if [ -e ~/.vim/bundle/nerdtree ]
+then
+	echo "Making backup of nerdtree plugin..."
+	mv ~/.vim/bundle/nerdtree ~/.vim/bundle/nerdtree-disabled
+fi
+
+git clone https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+rm ~/.vimrc
+
+if [ -e ~/.vimrc-disabled ]
+then
+	echo "Restoring backup of .vimrc..."
+	mv ~/.vimrc-disabled ~/.vimrc
+else
+
+rm ~/.vim/autoload/pathogen.vim
+if [ -e ~/.vim/autoload/pathogen-disabled.vim ]
+then
+	echo "Restoring backup of pathogen.vim..."
+	mv ~/.vim/autoload/pathogen-disabled.vim ~/.vim/autoload/pathogen.vim
+fi
+
+rm -rf ~/.vim/bundle/syntastic
+
+if [ -e ~/.vim/bundle/syntastic-disabled ]
+then
+	echo "Restoring backup of syntastic plugin..."
+	mv ~/.vim/bundle/syntastic-disabled ~/.vim/bundle/syntastic
+fi
+
+rm -rf ~/.vim/bundle/nerdtree
+
+if [ -e ~/.vim/bundle/nerdtree-disabled ]
+then
+	echo "Restoring backup of nerdtree plugin..."
+	mv ~/.vim/bundle/nerdtree-disabled ~/.vim/bundle/nerdtree
+fi
