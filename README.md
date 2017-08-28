@@ -1,2 +1,2 @@
 # vim-setup
-A place to hang a simple installation script for my Vim setup
+*A simple installation script for my Vim setup*
